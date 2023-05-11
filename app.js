@@ -33,6 +33,10 @@ app.use(purchaseRoutes);
 app.use(premUserRoutes);
 app.use(forgotpwdRoutes);
 
+app.use((req, res) => {
+  res.send(path.join(__dirname, `public/${req.url}`));
+});
+
 const accsessLogStream = fs.createWriteStream(
   path.join(__dirname, 'accsess.log'),
   { flags: 'a' }
