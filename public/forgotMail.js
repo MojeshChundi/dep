@@ -1,13 +1,11 @@
-document.getElementById('forgotpwd').addEventListener('click', forgotPwd);
+document.getElementById("forgotpwd").addEventListener("click", forgotPwd);
 
 function forgotPwd(e) {
   e.preventDefault();
-  const email = document.getElementById('email').value;
-  console.log(email);
+  const email = document.getElementById("email").value;
+  //console.log(email);
   axios
-    .post('http://54.89.86.238:4000/forgotpassword', {
-      email: email,
-    })
+    .post("http://localhost:3000/pwd", { email: email })
     .then((res) => {
       console.log(res);
     })
