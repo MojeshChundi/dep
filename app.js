@@ -34,7 +34,8 @@ app.use(premUserRoutes);
 app.use(forgotpwdRoutes);
 
 app.use((req, res) => {
-  res.send(path.join(__dirname, `public/${req.url}`));
+  console.log("url", req.url);
+  res.sendFile(path.join(__dirname, `${req.url}`));
 });
 
 const accsessLogStream = fs.createWriteStream(
@@ -62,6 +63,7 @@ Forgotpassword.belongsTo(User);
 sequelize
   .sync()
   .then((result) => {
-    app.listen(3000);
+    app.listen(process.env.PORT || 3000);
+    console.log(`${process.env.PORT} is running....`);
   })
   .catch((err) => console.log(err));
