@@ -6,7 +6,7 @@ const signUp = (e) => {
   const userDetails = { name, email, password };
 
   axios
-    .post("http://localhost:3000/user/add-user", userDetails)
+    .post("http://34.229.93.168:3000/user/add-user", userDetails)
     .then((res) => {
       window.alert("you are registered successfully!");
       window.location.href = "http://127.0.0.1:5500/public/logIn.html";

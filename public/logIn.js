@@ -8,7 +8,7 @@ function logIns(e) {
   const userDetails = { email, password };
   //console.log(userDetails);
   axios
-    .post("http://localhost:3000/user/login", userDetails)
+    .post("http://34.229.93.168:3000/user/login", userDetails)
     .then((res) => {
       console.log(res.data.user[0].ispremium);
       localStorage.setItem("token", res.data.token);

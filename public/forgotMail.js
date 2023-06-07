@@ -8,6 +8,7 @@ function forgotPwd(e) {
     .post("http://localhost:3000/pwd", { email: email })
     .then((res) => {
       console.log(res);
+      window.alert("mail sent succesfully!");
     })
     .catch((err) => {
       console.log(err);

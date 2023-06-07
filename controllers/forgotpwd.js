@@ -40,7 +40,12 @@ exports.forgotpassword = async (req, res, next) => {
           textContent: "update your password !",
           htmlContent: `<a href="http://localhost:3000/resetpassword/${id}">Reset password</a>`,
         })
-        .then(() => console.log("mailsent"))
+        .then(() => {
+          res.send(201).json({
+            message: "mail sent succesfully!",
+          });
+          console.log("mailsent");
+        })
         .catch((err) => console.log(err));
     }
   } catch (err) {
