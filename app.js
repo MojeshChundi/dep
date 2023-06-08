@@ -35,6 +35,7 @@ app.use(forgotpwdRoutes);
 
 app.use((req, res) => {
   console.log("url", req.url);
+  console.log("automatic depoymeny");
   res.sendFile(path.join(__dirname, `${req.url}`));
 });
 
