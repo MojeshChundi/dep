@@ -5,7 +5,7 @@ function forgotPwd(e) {
   const email = document.getElementById("email").value;
   //console.log(email);
   axios
-    .post("http://localhost:3000/pwd", { email: email })
+    .post("http://54.234.247.161:3000/pwd", { email: email })
     .then((res) => {
       console.log(res);
       window.alert("mail sent succesfully!");
