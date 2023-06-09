@@ -106,9 +106,61 @@
       }
 
       /* styles to error element */
+      ul.topnav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      ul.topnav li {
+        float: left;
+      }
+
+      ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      ul.topnav li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      ul.topnav li a.active {
+        background-color: #04aa6d;
+      }
+
+      ul.topnav li.right {
+        float: right;
+      }
+
+      @media screen and (max-width: 600px) {
+        ul.topnav li.right,
+        ul.topnav li {
+          float: none;
+        }
+      }
     </style>
   </head>
   <body>
+    <ul class="topnav">
+      <li>
+        <a class="active" href="http://54.145.29.149:80/public/signUp.html"
+          >Sign Up</a
+        >
+      </li>
+      <li><a href="http://54.145.29.149:80/public/logIn.html">LogIn</a></li>
+      <li>
+        <a href="http://54.145.29.149:80/public/forgotMail.html"
+          >Forgot Email</a
+        >
+      </li>
+      <li class="right"><a href="#about">Expense Tracker</a></li>
+    </ul>
     <div class="container">
       <h1>Login</h1>
       <form id="loginForm">
@@ -132,7 +184,7 @@
       <button type="submit" onclick="forgotMail()">forgot email</button>
       <p>
         New user?
-        <a href="http://54.234.247.161:3000/public/signUp.html" id="signupBtn"
+        <a href="http://54.145.29.149:80/public/signUp.html" id="signupBtn"
           >Sign up</a
         >
       </p>
