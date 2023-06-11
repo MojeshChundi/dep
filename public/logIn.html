@@ -105,62 +105,81 @@
         text-align: center;
       }
 
-      /* styles to error element */
-      ul.topnav {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-      }
+      /* nvabar styles */
+		/* UTILITIES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-      ul.topnav li {
-        float: left;
-      }
+body {
+  font-family: cursive;
+  background-image: url('https://img.freepik.com/free-vector/abstract-white-shapes-background_79603-1362.jpg?w=996&t=st=1686425881~exp=1686426481~hmac=46215460724bb237cd1f165f38dd04d5f6ffe93cef3ff1baacbf041351d6b587');
+}
 
-      ul.topnav li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
+a {
+  text-decoration: none;
+}
 
-      ul.topnav li a:hover:not(.active) {
-        background-color: #111;
-      }
+li {
+  list-style: none;
+}
 
-      ul.topnav li a.active {
-        background-color: #04aa6d;
-      }
+      /* NAVBAR STYLING STARTS */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(38, 205, 63);
+  color: hsl(0, 27%, 96%);
+}
 
-      ul.topnav li.right {
-        float: right;
-      }
+/* LOGO */
+.logo {
+  font-size: 32px;
+}
 
-      @media screen and (max-width: 600px) {
-        ul.topnav li.right,
-        ul.topnav li {
-          float: none;
-        }
-      }
+/* NAVBAR MENU */
+.menu {
+  display: flex;
+  gap: 1em;
+  font-size: 18px;
+}
+
+.menu li:hover {
+  background-color: #f1f2f5;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.menu li {
+  padding: 5px 14px;
+}
+
+/* DROPDOWN MENU */
+.services {
+  position: relative;
+}
+
+.services:hover .dropdown {
+  display: block;
+}
     </style>
   </head>
   <body>
-    <ul class="topnav">
-      <li>
-        <a class="active" href="http://54.145.29.149:80/public/signUp.html"
-          >Sign Up</a
-        >
-      </li>
-      <li><a href="http://54.145.29.149:80/public/logIn.html">LogIn</a></li>
-      <li>
-        <a href="http://54.145.29.149:80/public/forgotMail.html"
-          >Forgot Email</a
-        >
-      </li>
-      <li class="right"><a href="#about">Expense Tracker</a></li>
-    </ul>
+    <nav class="navbar">
+      <!-- LOGO -->
+      <div class="logo">EXPENSE TRACKER</div>
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+          <li><a href="http://54.145.29.149:80/public/signUp.html">SignUp</a></li>
+          <li><a href="http://54.145.29.149:80/public/logIn.html">LogIn</a></li>
+          <li class="services"> <a href="http://54.145.29.149:80/public/forgotMail.html">Forgot Password</a></li>
+        </div>
+      </ul>
+    </nav>
     <div class="container">
       <h1>Login</h1>
       <form id="loginForm">
