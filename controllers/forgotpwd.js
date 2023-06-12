@@ -46,7 +46,7 @@ exports.forgotpassword = async (req, res, next) => {
           });
           console.log("mailsent");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("mail not sent!"));
     }
   } catch (err) {
     console.error("mail not sent!!!!");
