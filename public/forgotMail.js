@@ -6,7 +6,7 @@ function forgotPwd(e) {
   console.log(email);
   window.alert("mail sent succesfully!");
   axios
-    .post("http://localhost:3000/pwd", { email: email })
+    .post("http://18.209.24.196:3000/pwd", { email: email })
     .then((res) => {
       console.log(res);
     })
