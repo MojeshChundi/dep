@@ -14,7 +14,7 @@ exports.forgotpassword = async (req, res, next) => {
       user.createForgotpassword({ id, active: true }).catch((err) => {
         throw new Error(err);
       });
-
+      console.log(process.env.API_KEY);
       const client = Sib.ApiClient.instance;
 
       const apiKey = client.authentications["api-key"];
@@ -46,7 +46,7 @@ exports.forgotpassword = async (req, res, next) => {
           });
           console.log("mailsent");
         })
-        .catch((err) => console.log("mail not sent!"));
+        .catch((err) => console.log(err));
     }
   } catch (err) {
     console.error("mail not sent!!!!");
