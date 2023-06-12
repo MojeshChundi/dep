@@ -38,7 +38,7 @@ exports.forgotpassword = async (req, res, next) => {
           to: recievers,
           subject: "update your email password!",
           textContent: "update your password !",
-          htmlContent: `<a href="http:// 18.209.24.196:3000/resetpassword/${id}">Reset password</a>`,
+          htmlContent: `<a href="http://18.209.24.196:3000/resetpassword/${id}">Reset password</a>`,
         })
         .then(() => {
           res.send(201).json({
