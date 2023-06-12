@@ -14,7 +14,7 @@ function logIns(e) {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("ispremium", res.data.user[0].ispremium);
       window.alert("login successfully!!");
-      window.location.href = "http://18.209.24.196:3000/public/expense.html";
+      window.location.href = "http://18.209.24.196:80/public/expense.html";
     })
     .catch((err) => {
       const OutputHTML = `<ul style="list-style-type: none; background-color: #f8d7da; color: #721c24; padding: 10px; border: 2px solid #f5c6cb; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,.2); text-align: center;"><li>please enter valid username ans password</li></ul>`;
