@@ -66,7 +66,7 @@
         display: inline-block;
         margin: 0 5px;
         padding: 10px;
-        background-color: #007bff;
+        background-color: hsl(189, 100%, 50%);
         border: none;
         border-radius: 5px;
         font-size: 1.2rem;
@@ -78,11 +78,11 @@
         display: inline-block;
         margin: 0 5px;
         padding: 10px;
-        background-color: #007bff;
+        background-color: hwb(251 3% 16%);
         border: none;
         border-radius: 5px;
         font-size: 1.2rem;
-        color: #fff;
+        color: hsl(0, 27%, 98%);
         cursor: pointer;
       }
 
@@ -251,7 +251,6 @@
       /* LOGO */
       .logo {
         font-size: 32px;
-        padding-left: 36%;
       }
     </style>
   </head>
@@ -261,6 +260,13 @@
       <div class="logo">EXPENSE TRACKER</div>
       <div class="card-content">
         <h1 style="display: none" id="premuser">Premium user</h1>
+      </div>
+      <div class="pagination-container">
+        <button style="display: none" id="rzp">Buy Premium</button>
+        <button style="display: none" id="rzp1">show leaderboard</button>
+        <button type="submit" style="display: none" id="download">
+          Download Expenses
+        </button>
       </div>
     </nav>
     <h1>Track Day To Day Expenses</h1>
@@ -288,14 +294,6 @@
       /><br /><br />
       <button type="submit" id="submit-btn">Add Expense</button>
     </form>
-
-    <div class="pagination-container">
-      <button style="display: none" id="rzp">Buy Premium</button>
-      <button style="display: none" id="rzp1">show leaderboard</button>
-      <button type="submit" style="display: none" id="download">
-        Download Expenses
-      </button>
-    </div>
 
     <div class="pagination-container">
       <label for="pagesize">Select Number Of Expenser:</label>

@@ -45,7 +45,7 @@ function networkCall(event) {
   const category = document.getElementById("phone").value;
   const data = { spentAmount, Description, category };
   axios
-    .post("http://54.145.29.149:3000/user/add-Expense", data, {
+    .post("http://18.209.24.196:3000/user/add-Expense", data, {
       headers: { Auth: token },
     })
     .then(function (res) {
@@ -68,7 +68,7 @@ function deleteData(id, amount) {
   const token = localStorage.getItem("token");
   axios
     .post(
-      "http://54.145.29.149:3000/user/delete-Expense",
+      "http://18.209.24.196:3000/user/delete-Expense",
       {
         id: id,
         spentAmount: amount,
@@ -87,7 +87,7 @@ function deleteData(id, amount) {
 document.getElementById("rzp").onclick = async (e) => {
   const token = localStorage.getItem("token");
   const response = await axios.get(
-    "http://54.145.29.149:3000/user/purchasePremium",
+    "http://18.209.24.196:3000/user/purchasePremium",
     { headers: { Auth: token } }
   );
   console.log("success response", response.data);
@@ -98,7 +98,7 @@ document.getElementById("rzp").onclick = async (e) => {
     handler: async function (response) {
       await axios
         .post(
-          "http://54.145.29.149:3000/user/status",
+          "http://18.209.24.196:3000/user/status",
           {
             order_id: options.order_id,
             payment_id: response.razorpay_payment_id,
@@ -121,7 +121,7 @@ document.getElementById("rzp").onclick = async (e) => {
   e.preventDefault();
   rzp1.on("payment.failed", async function (response) {
     await axios.post(
-      "http://54.145.29.149:3000/user/status",
+      "http://18.209.24.196:3000/user/status",
       {
         order_id: options.order_id,
         payment_id: response.razorpay_payment_id,
@@ -138,7 +138,7 @@ document.getElementById("rzp").onclick = async (e) => {
 window.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
   axios
-    .get("http://54.145.29.149:3000/user/get-Expense", {
+    .get("http://18.209.24.196:3000/user/get-Expense", {
       headers: { Auth: token },
     })
     .then((res) => {
@@ -197,7 +197,7 @@ const getProducts = (page) => {
   const limit = localStorage.getItem("pagesize");
   axios
     .get(
-      `http://54.145.29.149:3000/user/get-Expense?page=${page}&limit=${limit}`,
+      `http://18.209.24.196:3000/user/get-Expense?page=${page}&limit=${limit}`,
       {
         headers: {
           Auth: token,
@@ -246,7 +246,7 @@ async function leaderBoard() {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      "http://54.145.29.149:3000/user/premuser",
+      "http://18.209.24.196:3000/user/premuser",
       {
         headers: { Auth: token },
       }
@@ -282,7 +282,7 @@ function updatedData(id, amount) {
 
   //post data to the back end
   axios
-    .post("http://54.145.29.149:3000/user/update-Expense", data, {
+    .post("http://18.209.24.196:3000/user/update-Expense", data, {
       headers: { Auth: token },
     })
     .then(function (res) {
@@ -300,7 +300,7 @@ async function downloadExpense() {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      "http://54.145.29.149:3000/user/downloadfile",
+      "http://18.209.24.196:3000/user/downloadfile",
       {
         headers: { Auth: token },
       }
