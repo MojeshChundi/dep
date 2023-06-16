@@ -1,71 +1,147 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Email Input Form</title>
-	<style>
-		body {
-			background-color: #f2f2f2;
-			font-family: Arial, sans-serif;
-		}
+  <head>
+    <title>Email Input Form</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+      }
 
-		form {
-			background-color: #fff;
-			border-radius: 5px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin: 50px auto;
-			max-width: 400px;
-			padding: 20px;
-		}
-		
-		label {
-			color: #555;
-			font-size: 18px;
-			margin-bottom: 10px;
-			text-align: left;
-			width: 100%;
-		}
-		
-		input[type="email"] {
-			background-color: #f9f9f9;
-			border: none;
-			border-radius: 5px;
-			box-sizing: border-box;
-			font-size: 16px;
-			margin-bottom: 20px;
-			padding: 10px;
-			width: 100%;
-		}
-		
-		button[type="submit"] {
-			background-color: #4CAF50;
-			border: none;
-			border-radius: 5px;
-			color: #fff;
-			cursor: pointer;
-			font-size: 18px;
-			padding: 10px 20px;
-			transition: background-color 0.3s ease;
-		}
+      form {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 50px auto;
+        max-width: 400px;
+        padding: 20px;
+      }
 
-		button[type="submit"]:hover {
-			background-color: #3e8e41;
-		}
-		
-		button[type="submit"]:active {
-			background-color: #367538;
-		}
-	</style>
-</head>
-<body>
-	<form>
-		<label for="email">Email:</label>
-		<input type="email" id="email" name="email" placeholder="Enter your email">
-		<button type="submit" id="forgotpwd" >Submit</button>
-	</form>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="forgotMail.js" ></script>
-</body>
+      label {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: left;
+        width: 100%;
+      }
+
+      input[type="email"] {
+        background-color: #f9f9f9;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        margin-bottom: 20px;
+        padding: 10px;
+        width: 100%;
+      }
+
+      button[type="submit"] {
+        background-color: #4caf50;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      button[type="submit"]:active {
+        background-color: #367538;
+      }
+        /* nvabar styles */
+		/* UTILITIES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: cursive;
+  background-image: url('https://img.freepik.com/free-vector/abstract-white-shapes-background_79603-1362.jpg?w=996&t=st=1686425881~exp=1686426481~hmac=46215460724bb237cd1f165f38dd04d5f6ffe93cef3ff1baacbf041351d6b587');
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+      /* NAVBAR STYLING STARTS */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(38, 205, 63);
+  color: hsl(0, 27%, 96%);
+}
+
+/* LOGO */
+.logo {
+  font-size: 32px;
+}
+
+/* NAVBAR MENU */
+.menu {
+  display: flex;
+  gap: 1em;
+  font-size: 18px;
+}
+
+.menu li:hover {
+  background-color: #f1f2f5;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.menu li {
+  padding: 5px 14px;
+}
+
+/* DROPDOWN MENU */
+.services {
+  position: relative;
+}
+
+.services:hover .dropdown {
+  display: block;
+}
+    </style>
+  </head>
+  <body>
+     <nav class="navbar">
+      <!-- LOGO -->
+      <div class="logo">EXPENSE TRACKER</div>
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+          <li><a href="http://18.209.24.196:80/public/signUp.html">SignUp</a></li>
+          <li><a href="http://18.209.24.196:80/public/logIn.html">LogIn</a></li>
+        </div>
+      </ul>
+    </nav>
+    <form>
+      <label for="email"> Enter Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+      />
+      <button type="submit" id="forgotpwd">Submit</button>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="forgotMail.js"></script>
+  </body>
 </html>

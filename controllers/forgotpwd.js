@@ -1,12 +1,11 @@
-const uuid = require('uuid');
-const bcrypt = require('bcrypt');
-const Sib = require('sib-api-v3-sdk');
-require('dotenv').config();
+require("dotenv").config();
+const uuid = require("uuid");
+const bcrypt = require("bcrypt");
+const Sib = require("sib-api-v3-sdk");
+const User = require("../models/user");
+const Forgotpassword = require("../models/forgotpwd");
 
-const User = require('../models/user');
-const Forgotpassword = require('../models/forgotpwd');
-
-const forgotpassword = async (req, res) => {
+exports.forgotpassword = async (req, res, next) => {
   try {
     const { email } = req.body;
     const user = await User.findOne({ where: { email } });
@@ -15,16 +14,17 @@ const forgotpassword = async (req, res) => {
       user.createForgotpassword({ id, active: true }).catch((err) => {
         throw new Error(err);
       });
+      console.log(process.env.API_KEY);
       const client = Sib.ApiClient.instance;
 
-      const apiKey = client.authentications['api-key'];
+      const apiKey = client.authentications["api-key"];
 
       apiKey.apiKey = process.env.API_KEY;
 
       const transEmailApi = new Sib.TransactionalEmailsApi();
 
       const sender = {
-        email: 'mojeshchundi5432@gmail.com',
+        email: "mojeshchundi5432@gmail.com",
       };
 
       const recievers = [
@@ -36,20 +36,25 @@ const forgotpassword = async (req, res) => {
         .sendTransacEmail({
           sender,
           to: recievers,
-          subject: 'update your email password!',
-          textContent: 'update your password !',
-          htmlContent: `<a href="http://localhost:4000/resetpassword/${id}">Reset password</a>`,
+          subject: "update your email password!",
+          textContent: "update your password !",
+          htmlContent: `<a href="http://18.209.24.196:3000/resetpassword/${id}">Reset password</a>`,
         })
-        .then(() => console.log('mailsent'))
-        .catch((err) => console.log(err));
+        .then(() => {
+          res.send(201).json({
+            message: "mail sent succesfully!",
+          });
+          console.log("mailsent");
+        })
+        .catch((err) => console.log("mail not sent!"));
     }
   } catch (err) {
-    console.error(err);
-    return res.json({ message: err, sucess: false });
+    console.error("mail not sent!!!!");
+    res.json({ message: err, sucess: false });
   }
 };
 
-const resetpassword = (req, res) => {
+exports.resetpassword = (req, res) => {
   const id = req.params.id;
   console.log(id);
   Forgotpassword.findOne({ where: { id } }).then((forgotpasswordrequest) => {
@@ -99,7 +104,7 @@ const resetpassword = (req, res) => {
   });
 };
 
-const updatepassword = (req, res) => {
+exports.updatepassword = (req, res) => {
   try {
     const { newpassword } = req.query;
     const { resetpasswordid } = req.params;
@@ -126,14 +131,14 @@ const updatepassword = (req, res) => {
                   user.update({ password: hash }).then(() => {
                     res
                       .status(201)
-                      .json({ message: 'Successfuly update the new password' });
+                      .json({ message: "Successfuly update the new password" });
                   });
                 });
               });
             } else {
               return res
                 .status(404)
-                .json({ error: 'No user Exists', success: false });
+                .json({ error: "No user Exists", success: false });
             }
           }
         );
@@ -142,10 +147,4 @@ const updatepassword = (req, res) => {
   } catch (error) {
     return res.status(403).json({ error, success: false });
   }
-};
-
-module.exports = {
-  forgotpassword,
-  updatepassword,
-  resetpassword,
 };

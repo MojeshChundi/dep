@@ -6,10 +6,10 @@ const signUp = (e) => {
   const userDetails = { name, email, password };
 
   axios
-    .post('http://54.89.86.238:3000/user/add-user', userDetails)
+    .post("http://18.209.24.196:3000/user/add-user", userDetails)
     .then((res) => {
-      window.alert('you are registered successfully!');
-      window.location.href = 'http://127.0.0.1:5501/logIn.html';
+      window.alert("you are registered successfully!");
+      window.location.href = "http://18.209.24.196:80/public/logIn.html";
     })
     .catch((err) => console.log(err));
 };

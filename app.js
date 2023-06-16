@@ -1,22 +1,22 @@
-const path = require('path');
-require('dotenv').config();
-const fs = require('fs');
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const userRoutes = require('./routes/user');
-const forgotpwdRoutes = require('./routes/forgotpwd');
-const expenseRoutes = require('./routes/expense');
-const purchaseRoutes = require('./routes/purchase');
-const premUserRoutes = require('./routes/premuser');
-const sequelize = require('./utils/database');
-const User = require('./models/user');
-const Expense = require('./models/expense');
-const Order = require('./models/orders');
-const Forgotpassword = require('./models/forgotpwd');
-const helmet = require('helmet');
-const compression = require('compression');
-const morgan = require('morgan');
+const path = require("path");
+require("dotenv").config();
+const fs = require("fs");
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const userRoutes = require("./routes/user");
+const forgotpwdRoutes = require("./routes/forgotpwd");
+const expenseRoutes = require("./routes/expense");
+const purchaseRoutes = require("./routes/purchase");
+const premUserRoutes = require("./routes/premuser");
+const sequelize = require("./utils/database");
+const User = require("./models/user");
+const Expense = require("./models/expense");
+const Order = require("./models/orders");
+const Forgotpassword = require("./models/forgotpwd");
+const helmet = require("helmet");
+const compression = require("compression");
+const morgan = require("morgan");
 const app = express();
 
 app.use(cors());
@@ -34,18 +34,20 @@ app.use(premUserRoutes);
 app.use(forgotpwdRoutes);
 
 app.use((req, res) => {
-  res.send(path.join(__dirname, `public/${req.url}`));
+  console.log("url", req.url);
+  console.log("automatic depoymeny");
+  res.sendFile(path.join(__dirname, `${req.url}`));
 });
 
 const accsessLogStream = fs.createWriteStream(
-  path.join(__dirname, 'accsess.log'),
-  { flags: 'a' }
+  path.join(__dirname, "accsess.log"),
+  { flags: "a" }
 );
 
 // MIDDLE WARE
 app.use(helmet());
 app.use(compression());
-app.use(morgan('combined', { stream: accsessLogStream }));
+app.use(morgan("combined", { stream: accsessLogStream }));
 
 //RELATIONS
 
@@ -63,5 +65,6 @@ sequelize
   .sync()
   .then((result) => {
     app.listen(process.env.PORT || 3000);
+    console.log(`${process.env.PORT} is running....`);
   })
   .catch((err) => console.log(err));

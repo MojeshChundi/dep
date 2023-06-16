@@ -1,6 +1,7 @@
 const express = require("express");
 const AuthConttroller = require("../middleware/auth");
 const purchaseController = require("../controllers/purchase");
+const resetpasswordController = require("../controllers/forgotpwd");
 const router = express.Router();
 
 //RAZORPAY PAYMENT
